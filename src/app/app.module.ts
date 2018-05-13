@@ -1,19 +1,18 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-
 import { AppComponent } from './app.component';
-import { ImageHelperDirective } from './image-helper.directive';
+import { ImageHelperModule } from './image-helper/image-helper.module';
 
 @NgModule({
   declarations: [
     AppComponent,
-    ImageHelperDirective
   ],
   imports: [
-    BrowserModule
+    BrowserModule,
+    ImageHelperModule
   ],
   providers: [],
-  exports: [ImageHelperDirective],
+  exports: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

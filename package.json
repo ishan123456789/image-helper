@@ -1,6 +1,6 @@
 {
   "name": "image-helper",
-  "version": "0.0.0",
+  "version": "0.0.6",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
@@ -11,7 +11,7 @@
     "packagr": "ng-packagr -p ng-package.json"
   },
   "private": false,
-  "dependencies": {
+  "peerDependencies": {
     "@angular/common": "^6.0.0",
     "@angular/compiler": "^6.0.0",
     "@angular/core": "^6.0.0",

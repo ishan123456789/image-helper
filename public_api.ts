@@ -1,1 +1,1 @@
-export * from './src/app/app.module';
+export * from './src/app/image-helper/image-helper.module';
