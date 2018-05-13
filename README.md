@@ -1,5 +1,7 @@
 # ImageHelper
-Angular 6 ready image helper package allows to add fallback image if primary fails.[demo](https://image-helper.stackblitz.io)
+Angular 6 ready image helper package allows to add fallback image if primary fails.
+
+[Working demo](https://image-helper.stackblitz.io)
 
 ### Install
 
