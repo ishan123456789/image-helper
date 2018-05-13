@@ -1,6 +1,8 @@
 {
   "name": "image-helper",
   "version": "0.0.7",
+  "author": "Ishan Mahajan",
+  "description": "Image helper allows you to define fallback image if the main one fails",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
@@ -11,6 +13,18 @@
     "packagr": "ng-packagr -p ng-package.json"
   },
   "private": false,
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ishan123456789/image-helper.git"
+  },
+  "keywords": [
+    "image, fallback , angular6 , angular"
+  ],
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/ishan123456789/image-helper/issues"
+  },
+  "homepage": "https://github.com/ishan123456789/image-helper#readme",
   "peerDependencies": {
     "@angular/common": "^6.0.0",
     "@angular/compiler": "^6.0.0",
