@@ -48,3 +48,8 @@ export class AppComponent {
 ```
 
 See also [editable stackblitz example](https://stackblitz.com/edit/image-helper).
+
+### Contributions
+
+I'm looking forward to add loader feature to this plugin any help will be apperciated.
+
