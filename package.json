@@ -3,6 +3,7 @@
   "version": "0.0.8",
   "author": "Ishan Mahajan",
   "description": "Image helper allows you to define fallback image if the main one fails",
+  "license": "MIT",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
