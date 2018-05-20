@@ -49,6 +49,26 @@ export class AppComponent {
 
 See also [editable stackblitz example](https://stackblitz.com/edit/image-helper).
 
+### New Feature
+No you can add a global fallback so now you don't need to enter a  `ImageFallbackPath="{{thePathToFallbackImage}}"` for every image although you can add it if you want some images to fallback to a particular url.
+
+Here's the code for that:
+
+```
+import { Component } from '@angular/core';
+import { ImageHelperService } from 'image-helper';
+@Component({
+  selector: 'my-app',
+  templateUrl: './app.component.html',
+  styleUrls: [ './app.component.css' ]
+})
+export class AppComponent  {
+  constructor(private global: ImageHelperService) {
+    this.global.setGlobalFallbackImagePath('https://example.com/.png');
+  }
+}
+
+```
 ### Contributions
 
 I'm looking forward to add loader feature to this plugin any help will be apperciated.
