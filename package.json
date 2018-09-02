@@ -1,9 +1,8 @@
 {
   "name": "image-helper",
-  "version": "0.0.8",
+  "version": "2.0.0",
   "author": "Ishan Mahajan",
   "description": "Image helper allows you to define fallback image if the main one fails",
-  "license": "MIT",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
@@ -26,7 +25,7 @@
     "url": "https://github.com/ishan123456789/image-helper/issues"
   },
   "homepage": "https://github.com/ishan123456789/image-helper#readme",
-  "peerDependencies": {
+  "dependencies": {
     "@angular/common": "^6.0.0",
     "@angular/compiler": "^6.0.0",
     "@angular/core": "^6.0.0",

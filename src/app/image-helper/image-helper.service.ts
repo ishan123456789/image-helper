@@ -1,17 +1,17 @@
 import { Injectable } from '@angular/core';
-import { Observable , BehaviorSubject   } from 'rxjs/Rx';
+import { Observable , BehaviorSubject   } from 'rxjs';
 
 @Injectable()
 export class ImageHelperService {
     public globalFallBackPath: BehaviorSubject<string> = new BehaviorSubject<string>('');
-    
+    private globalFallBackPathIn = '';
     constructor() {
-        setTimeout(() => {
-          // this.loader.display(true);
-        }, 2000);
-      }  
-      public setGlobalFallbackImagePath(path) {
+    }
+    returnPath(): string {
+        return this.globalFallBackPathIn;
+    }
+    public setGlobalFallbackImagePath(path) {
+        this.globalFallBackPathIn = path;
         this.globalFallBackPath.next(path);
-      }
-       
+    }
 }
