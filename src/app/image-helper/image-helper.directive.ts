@@ -1,12 +1,13 @@
 import { Directive, ElementRef, Input, OnInit, AfterViewInit, HostListener } from '@angular/core';
-import { ImageHelperService } from './image-helper.service';
+import { ImageHelperService, ImageConfig } from './image-helper.service';
+
 
 @Directive({
   selector: '[isImageHelper]'
 })
 export class ImageHelperDirective implements OnInit, AfterViewInit {
-  @Input() ImageFallbackPath: string;
-  public globalFallBackPath = '';
+  @Input('imageConfig') localConfig: ImageConfig;
+  private globalConfig: ImageConfig;
   private originalPath = '';
   doneLoading = false;
 
@@ -16,30 +17,30 @@ export class ImageHelperDirective implements OnInit, AfterViewInit {
     private global: ImageHelperService
     ) {
   }
-  // @HostListener('onload', ['$event'])
-  // pageLoad() {
-  //   // runRestHere
-  //   // this.el.nativeElement.src = this.originalPath;
-  // }
-  // @HostListener('error', ['$event'])
-  // onError() {
-  //   console.log(this.el);
-  //   this.el.nativeElement.src = this.ImageFallbackPath ? this.ImageFallbackPath : this.globalFallBackPath;
-  //   // this.el.nativeElement.src = '';
-  // }
+  @HostListener('onload', ['$event'])
+  pageLoad() {
+    // runRestHere
+    this.el.nativeElement.src = this.originalPath;
+  }
+  @HostListener('error', ['$event'])
+  onError() {
+    console.log(this.el);
+    this.el.nativeElement.src = this.localConfig && this.localConfig.imageFallbackPath ? this.localConfig.imageFallbackPath : this.globalConfig.imageFallbackPath;
+    // this.el.nativeElement.src = '';
+  }
   ngAfterViewInit() {
       this.el.nativeElement.onload = () => {this.createImage(); };
   }
-  setGlobalFallBackPath(path: string) {
-    this.globalFallBackPath = path;
+  setGlobalFallBackPath(config: ImageConfig) {
+    this.globalConfig = config;
   }
   ngOnInit() {
-    this.originalPath = this.el.nativeElement.src;
-    this.el.nativeElement.src = '';
-    this.globalFallBackPath = this.global.returnPath();
+    this.globalConfig = this.global.returnConfig();
+    this.originalPath = this.el.nativeElement.src;    
+    this.el.nativeElement.src = '';    
     this.showLoader();
-    this.global.globalFallBackPath.subscribe((data) => {
-      this.globalFallBackPath = data;
+    this.global.globalFallBackPath.subscribe((config: ImageConfig) => {
+      this.globalConfig = config;
     });
     Promise.all([this.showLoader()]);
   }
@@ -62,6 +63,6 @@ export class ImageHelperDirective implements OnInit, AfterViewInit {
       this.el.nativeElement.parentNode.children[1].remove();
   }
   prepareLoader() {
-    return `<div class="sk-rotating-plane"></div>`;
+    return `<div class="is-loader"><div class="sk-rotating-plane"></div></div>`;
   }
 }

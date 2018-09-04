@@ -1,17 +1,22 @@
 import { Injectable } from '@angular/core';
-import { Observable , BehaviorSubject   } from 'rxjs';
-
+import { Observable , BehaviorSubject } from 'rxjs';
+export interface ImageConfig {
+  imageFallbackPath: string;
+  addLoader: boolean;
+  loader: string;
+  pageLoadBoost: boolean;
+}
 @Injectable()
 export class ImageHelperService {
-    public globalFallBackPath: BehaviorSubject<string> = new BehaviorSubject<string>('');
-    private globalFallBackPathIn = '';
+    public globalFallBackPath: BehaviorSubject<ImageConfig> = new BehaviorSubject<ImageConfig>({imageFallbackPath: '', addLoader: true, loader: 'rotating-plane', pageLoadBoost: true});
+    private configIn: ImageConfig = {imageFallbackPath: '', addLoader: true, loader: 'rotating-plane', pageLoadBoost: true};
     constructor() {
     }
-    returnPath(): string {
-        return this.globalFallBackPathIn;
+    returnConfig(): ImageConfig {
+        return this.configIn;
     }
-    public setGlobalFallbackImagePath(path) {
-        this.globalFallBackPathIn = path;
-        this.globalFallBackPath.next(path);
+    public setGlobal(config: ImageConfig) {
+        this.configIn = config;
+        this.globalFallBackPath.next(config);
     }
 }
