@@ -8,7 +8,13 @@ export interface ImageConfig {
 }
 @Injectable()
 export class ImageHelperService {
-    public globalFallBackPath: BehaviorSubject<ImageConfig> = new BehaviorSubject<ImageConfig>({imageFallbackPath: '', addLoader: true, loader: 'rotating-plane', pageLoadBoost: true});
+    public globalFallBackPath: BehaviorSubject<ImageConfig> = new BehaviorSubject<ImageConfig>(
+        {
+            imageFallbackPath: '',
+            addLoader: true,
+            loader: 'rotating-plane',
+            pageLoadBoost: true
+        });
     private configIn: ImageConfig = {imageFallbackPath: '', addLoader: true, loader: 'rotating-plane', pageLoadBoost: true};
     constructor() {
     }
