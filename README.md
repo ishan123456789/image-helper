@@ -71,5 +71,5 @@ export class AppComponent  {
 ```
 ### Contributions
 
-I'm looking forward to add loader feature to this plugin any help will be apperciated.
+Any suggestion or bug fixes are welcomed
 
