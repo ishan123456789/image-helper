@@ -1,75 +1,57 @@
 # ImageHelper
-Angular 6 ready image helper package allows to add fallback image if primary fails.
 
-[Working demo](https://image-helper.stackblitz.io)
+Ever experienced broken image like ![Image example](https://static.havemybooks.com/external/broken-image.png)
 
-### Install
+If ever this happen that you loose your image but there will always be a backup for you. We've added an extra feature which will boost your page load time to upto 10X. As we load the image after the page load successfully so you angular app will turn much faster using this plugin.
 
-```
-npm install  image-helper --save
-```
-### Usage
+## Getting Started
 
-Add module to your module's ```imports```
+    npm install image-helper --save
+*Version above 3.0 of image-helper is suggested*
+        Then in your code `app.module.ts`
+        
+        import { ImageHelperModule } from  './image-helper/image-helper.module';
+	    @NgModule({    
+		    imports: [
+		    ...otherImports,    
+		    ImageHelperModule    
+		    ]
+	    })
+Then in your code `app.component.ts`
 
-```typescript
-import { NgModule } from '@angular/core';
-import { BrowserModule  } from '@angular/platform-browser';
-import { AppComponent } from './app';
- 
-import { ImageHelperModule } from 'image-helper';
- 
+    import { ImageHelperService, ImageConfig } from  './image-helper/image-helper.service';
+    constructor(public  imgHelper:  ImageHelperService) {}    
+    localConfig:  ImageConfig  = { imageFallbackPath:  'https://www.gstatic.com/webp/gallery3/1.png',
+		addLoader:  true,
+		loader:  'rotating-plane',
+		pageLoadBoost:  true
+	};
+    ngOnInit() {
+		    this.imgHelper.setGlobal({ imageFallbackPath:  'https://www.gstatic.com/webp/gallery3/2.png',    
+		    addLoader:  true,    
+		    loader:  'rotating-plane',    
+		    pageLoadBoost:  true    
+	    });    
+    }
+Then in your code `app.component.scss`
 
-@NgModule({
-  imports: [
-    BrowserModule, 
-    ImageHelperModule
-  ],
-  declarations: [AppComponent],
-  bootstrap: [AppComponent]
-})
-export class AppModule {}
-```
+    @import  '~image-helper/loader';
 
-Use it in you component
 
-```typescript
-import { Component } from '@angular/core';
+### Working Examples
 
-@Component({
-  selector: 'example-app',
-  template: '<img src='asfd.jpg' isImageHelper ImageFallbackPath="{{thePathToFallbackImage}}">'
-})
+Here's the demo on [stackblitz](https://stackblitz.com/edit/image-demo-3)
 
-export class AppComponent {
-  thePathToFallbackImage = 'https://www.gstatic.com/webp/gallery3/2.png';
-}
 
-```
+## Versioning
 
-See also [editable stackblitz example](https://stackblitz.com/edit/image-helper).
+We use [SemVer](http://semver.org/) for versioning. For the versions available, see the [tags on this repository](https://github.com/your/project/tags). 
+To install a particular version do it like this `npm i image-helper@3.0.0 --save`
 
-### New Feature
-No you can add a global fallback so now you don't need to enter a  `ImageFallbackPath="{{thePathToFallbackImage}}"` for every image although you can add it if you want some images to fallback to a particular url.
+## License
 
-Here's the code for that:
+This project is licensed under the MIT License - see the [LICENSE.md](LICENSE) file for details
 
-```
-import { Component } from '@angular/core';
-import { ImageHelperService } from 'image-helper';
-@Component({
-  selector: 'my-app',
-  templateUrl: './app.component.html',
-  styleUrls: [ './app.component.css' ]
-})
-export class AppComponent  {
-  constructor(private global: ImageHelperService) {
-    this.global.setGlobalFallbackImagePath('https://example.com/.png');
-  }
-}
+## Acknowledgments
 
-```
-### Contributions
-
-I'm looking forward to add loader feature to this plugin any help will be apperciated.
-
+Thanks to everyone who'll use this plugin as this is my first plugin so actively looking forward to work on it. So all the issues are welcomed and I'll look forward to actively work on them.

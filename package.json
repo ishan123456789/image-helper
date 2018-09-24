@@ -1,9 +1,8 @@
 {
   "name": "image-helper",
-  "version": "0.0.8",
+  "version": "2.0.6",
   "author": "Ishan Mahajan",
   "description": "Image helper allows you to define fallback image if the main one fails",
-  "license": "MIT",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
@@ -11,7 +10,8 @@
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
-    "packagr": "ng-packagr -p ng-package.json"
+    "packagr": "ng-packagr -p ng-package.json",
+    "postpackage": "cp -R ./src/assets/* ./dist/  && tar -cvzf dist.tgz -C dist ."
   },
   "private": false,
   "repository": {
@@ -37,7 +37,6 @@
     "@angular/router": "^6.0.0",
     "core-js": "^2.5.4",
     "rxjs": "^6.1.0",
-    "rxjs-compat": "^6.1.0",
     "zone.js": "^0.8.26"
   },
   "devDependencies": {
